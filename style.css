@@ -87,7 +87,8 @@ form button:hover {
   cursor: pointer;
 }
 
-form input:invalid ~ .error {
+form input:invalid ~ .error,
+form.hasErrors input:valid ~ .error {
   display: block;
   color: var(--soft-red);
   font-size: 0.7rem;

@@ -55,7 +55,7 @@
         launch deals.
       </p>
 
-      <form id="subscribeForm">
+      <form id="subscribeForm" novalidate>
         <input
           type="email"
           name="email"
@@ -80,10 +80,17 @@
     </footer>
     <script>
       const form = document.getElementById("subscribeForm");
+      const email = document.querySelector("#email");
+      const emailRegx = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
-      function submit(e) {
-        e.preventDefault();
-      }
+      form.addEventListener("submit", (e) => {
+        if (!emailRegx.test(email.value)) {
+          form.classList.add("hasErrors");
+          e.preventDefault();
+        } else {
+          form.classList.remove("hasErrors");
+        }
+      });
     </script>
   </body>
 </html>
